@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Dashboard Overview</h1>
+</div>
+
+<div class="dashboard-stats">
+    <div class="stat-card">
+        <div class="stat-icon">
+            <i class="fas fa-users"></i>
+        </div>
+        <div class="stat-info">
+            <h3>Registered Students</h3>
+            <p>{{ total_students }}</p>
+        </div>
+    </div>
+    
+    <div class="stat-card">
+        <div class="stat-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="stat-info">
+            <h3>Present Today</h3>
+            <p>{{ present_today }}</p>
+        </div>
+    </div>
+</div>
+
+<div class="card" style="margin-top: 32px; background: linear-gradient(135deg, rgba(20, 26, 40, 0.8), rgba(99, 102, 241, 0.05));">
+    <h2 class="card-title">Welcome to SmartAttend</h2>
+    <p style="color: var(--text-muted); line-height: 1.7; font-size: 1.05rem;">
+        Experience seamless and accurate classroom attendance tracking powered by advanced facial recognition technology. 
+        Register new students, train the AI model, and monitor attendance in real-time.
+    </p>
+    <div style="margin-top: 32px; display: flex; gap: 20px;">
+        <a href="{{ url_for('register_student') }}" class="btn btn-primary">
+            <i class="fas fa-user-plus"></i> Register Student
+        </a>
+        <a href="{{ url_for('mark_att') }}" class="btn btn-success">
+            <i class="fas fa-play"></i> Start Live Attendance
+        </a>
+    </div>
+</div>
+{% endblock %}

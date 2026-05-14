@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Attendance System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-brand">
+            <h2><i class="fas fa-fingerprint"></i> SmartAttend</h2>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="{{ url_for('index') }}" class="{% if request.endpoint == 'index' %}active{% endif %}">
+                <i class="fas fa-home"></i> Dashboard
+            </a>
+            <a href="{{ url_for('register_student') }}" class="{% if request.endpoint == 'register_student' %}active{% endif %}">
+                <i class="fas fa-user-plus"></i> Register Student
+            </a>
+            <a href="{{ url_for('train') }}" class="{% if request.endpoint == 'train' %}active{% endif %}">
+                <i class="fas fa-brain"></i> Train Model
+            </a>
+            <a href="{{ url_for('mark_att') }}" class="{% if request.endpoint == 'mark_att' %}active{% endif %}">
+                <i class="fas fa-camera"></i> Live Attendance
+            </a>
+            <a href="{{ url_for('view_att') }}" class="{% if request.endpoint == 'view_att' %}active{% endif %}">
+                <i class="fas fa-table"></i> View Records
+            </a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        <i class="fas fa-info-circle"></i> {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

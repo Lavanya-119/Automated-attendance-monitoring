@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Live Attendance Marking</h1>
+</div>
+
+<div class="card" style="margin-top: 24px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+        <h2 class="card-title" style="margin-bottom: 0;">Live Camera Feed</h2>
+        <a href="{{ url_for('stop_mark') }}" class="btn btn-danger">Stop Camera & Return</a>
+    </div>
+
+    <div class="video-container" style="max-width: 800px; margin: 0 auto;">
+        <img src="{{ url_for('video_feed_attendance') }}" alt="Live Attendance Feed" style="width: 100%; height: auto; border-radius: 8px;">
+    </div>
+    
+    <div style="margin-top: 24px; text-align: center; color: var(--text-muted);">
+        <p><i class="fas fa-info-circle"></i> The system automatically recognizes faces and marks attendance. Present students will be enclosed in a green box.</p>
+    </div>
+</div>
+{% endblock %}
